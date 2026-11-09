@@ -31,13 +31,24 @@ details{background:#101b15;border:1px solid var(--line);border-radius:12px;margi
 .small{font-size:12px;color:var(--muted)}.no-results{display:none;text-align:center;padding:24px;color:#ffc0a9;border:1px dashed #80574b;border-radius:14px;margin:16px 0}
 footer{text-align:center;padding:32px 18px;color:#91ad9b;border-top:1px solid var(--line);background:#070e0a;font-size:13px}footer strong{color:var(--green)}
 @media(max-width:650px){.nav{align-items:flex-start;flex-direction:column}nav{gap:9px}.hero{margin:16px 10px;padding:43px 15px}main{padding:5px 13px 45px}.section-title{font-size:23px}}
+
+#questionForm{display:flex;flex-direction:column;gap:10px}
+#questionForm label{font-weight:700;color:var(--text)}
+#questionForm input,#questionForm textarea{width:100%;box-sizing:border-box;padding:12px;border-radius:12px;border:1px solid var(--line);background:#101b17;color:var(--text);font:inherit}
+#questionForm textarea{min-height:120px;resize:vertical}
+#questionForm .small,.small{font-size:.88rem;color:var(--muted)}
+.action-button{border:0;border-radius:12px;padding:12px 18px;background:var(--green);color:#07110c;font-weight:800;font:inherit;cursor:pointer}
+#questionFeedback{font-weight:700}
+.answer-item{padding:12px 0;border-bottom:1px solid var(--line)}
+.answer-item:last-child{border-bottom:0}
+
 </style>
 </head>
 <body>
 <header><div class="nav">
 <a class="brand" href="#inicio">💎 PICA UNA GEMA STUDIOS</a>
 <nav aria-label="Navegación principal">
-<a href="#gemas">Gemas</a><a href="#piedras">Piedras</a><a href="#lava">Lava</a><a href="#bases">Bases</a><a href="#caminadoras">Caminadoras</a><a href="#herramientas">Herramientas</a><a href="#sistemas">Sistemas</a><a href="#faq">FAQ</a>
+<a href="#gemas">Gemas</a><a href="#piedras">Piedras</a><a href="#lava">Lava</a><a href="#bases">Bases</a><a href="#caminadoras">Caminadoras</a><a href="#herramientas">Herramientas</a><a href="#sistemas">Sistemas</a><a href="#preguntas">Preguntas</a><a href="#faq">FAQ</a>
 </nav></div></header>
 <section class="hero" id="inicio">
 <div class="eyebrow">⛏️ ENCICLOPEDIA DE LA BETA</div>
@@ -240,6 +251,32 @@ footer{text-align:center;padding:32px 18px;color:#91ad9b;border-top:1px solid va
 <p class="lead">La idea expresada es que dinero, gemas raras, base y velocidad/pico tengan importancia al comparar quién es el jugador más poderoso.</p>
 </section>
 
+
+<section class="section" id="preguntas">
+<h2 class="section-title">💬 Preguntas y <span>respuestas</span></h2>
+<p class="lead">¿Tienes una duda sobre Pica Una Gema? Envíala aquí. Las respuestas que publique el equipo podrán aparecer para que toda la comunidad las consulte.</p>
+<div class="grid">
+<article class="card">
+<h3>✍️ Enviar una pregunta</h3>
+<form id="questionForm">
+<label for="questionName">Nombre o usuario de Roblox (opcional)</label>
+<input id="questionName" maxlength="24" autocomplete="off" placeholder="Tu usuario">
+<label for="questionText">Tu pregunta</label>
+<textarea id="questionText" maxlength="500" required placeholder="Escribe tu pregunta aquí..."></textarea>
+<p class="small">No incluyas datos personales. Los mensajes con lenguaje inapropiado o spam serán rechazados.</p>
+<button class="action-button" type="submit">Enviar pregunta</button>
+<p id="questionFeedback" role="status" aria-live="polite"></p>
+</form>
+</article>
+<article class="card">
+<h3>📢 Respuestas publicadas</h3>
+<p>Cuando una pregunta sea revisada y respondida por el equipo, podrá aparecer aquí para ayudar a otros jugadores.</p>
+<div id="publicAnswers"><p class="small">Todavía no hay respuestas publicadas.</p></div>
+</article>
+</div>
+<div class="notice warning">🔒 Esta es la interfaz inicial. Para que las preguntas lleguen a tu panel privado y las respuestas se publiquen para todos los visitantes, falta conectar una base de datos y un servidor seguro. Guardarlas solamente en el navegador no las compartiría con otros jugadores.</div>
+</section>
+
 <section class="section" id="faq">
 <h2 class="section-title">❓ Preguntas <span>frecuentes</span></h2>
 <p class="lead">Respuestas basadas en las reglas y planes que se han compartido. Abre una pregunta para leerla.</p>
@@ -332,6 +369,36 @@ function buscar(){
  noResults.style.display=q&&found===0?'block':'none';
 }
 input.addEventListener('input',buscar);
+
+// Filtro preventivo inicial: normaliza letras, separadores y símbolos comunes.
+// Debe complementarse con moderación y validación en el servidor.
+const questionForm=document.getElementById('questionForm');
+const questionFeedback=document.getElementById('questionFeedback');
+const questionText=document.getElementById('questionText');
+function normalizarTexto(texto){
+ return texto.toLocaleLowerCase('es')
+  .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+  .replace(/[0-9]/g,'')
+  .replace(/[^a-z]/g,'');
+}
+const palabrasBloqueadas=[
+ // La lista debe mantenerse y ampliarse desde el servidor para cubrir variantes locales.
+ 'insultoofensivo','palabraprohibida'
+];
+function contieneLenguajeInapropiado(texto){
+ const normal=normalizarTexto(texto);
+ if(palabrasBloqueadas.some(p=>normal.includes(p))) return true;
+ // Detecta escritura con separadores entre letras para las palabras configuradas.
+ return false;
+}
+questionForm.addEventListener('submit',e=>{
+ e.preventDefault();
+ const texto=questionText.value.trim();
+ if(texto.length<8){questionFeedback.textContent='Escribe una pregunta un poco más completa.';return;}
+ if(contieneLenguajeInapropiado(texto)){questionFeedback.textContent='No se pudo enviar. Revisa tu mensaje y usa un lenguaje respetuoso.';return;}
+ questionFeedback.textContent='La interfaz está lista, pero el envío real se activará al conectar el servidor de preguntas.';
+});
+
 </script>
 </body>
 </html>
