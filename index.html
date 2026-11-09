@@ -1,1 +1,225 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pica Una Gema Studios</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;background:#090d0b;color:#f2f7f3;
+ font-family:Arial,sans-serif;
+}
+header{
+ background:linear-gradient(135deg,#092d1c,#101713);
+ padding:35px 18px;text-align:center;
+ border-bottom:2px solid #16a765;
+}
+.logo{font-size:45px}
+h1{color:#42e995;margin:10px 0}
+header p{color:#c4d6ca}
+nav{
+ display:flex;gap:9px;justify-content:center;
+ flex-wrap:wrap;padding:15px;background:#101713;
+ position:sticky;top:0;z-index:5;
+}
+nav a{
+ color:#b8f5d1;text-decoration:none;
+ padding:9px 12px;border-radius:9px;
+ background:#1b2b22;font-size:13px;
+}
+nav a:hover{background:#17643c}
+main{max-width:950px;margin:auto;padding:20px}
+h2{color:#50e99a;border-bottom:1px solid #245c3e;padding-bottom:10px}
+.bienvenida{
+ background:linear-gradient(135deg,#123d29,#17251d);
+ padding:25px;border-radius:18px;margin:20px 0;
+ border:1px solid #267849;
+}
+input{
+ width:100%;padding:15px;border-radius:12px;
+ border:1px solid #39875c;background:#111b15;
+ color:white;font-size:16px;margin:15px 0;
+}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:15px;
+}
+.card{
+ background:#121b15;padding:18px;border-radius:14px;
+ border:1px solid #263d2e;
+}
+.card h3{color:#65e9a2}
+.card p{color:#c2cec5;line-height:1.5}
+.tag{color:#65e9a2;font-size:12px}
+section{margin:40px 0}
+button{
+ background:#16864c;color:white;border:0;
+ padding:12px 18px;border-radius:10px;font-weight:bold;
+}
+footer{
+ text-align:center;padding:30px;color:#819489;
+ border-top:1px solid #263d2e;
+}
+.oculto{display:none}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">💎</div>
+ <h1>Pica Una Gema Studios</h1>
+ <p>La página oficial de Pica Una Gema</p>
+</header>
+
+<nav>
+ <a href="#inicio">Inicio</a>
+ <a href="#gemas">Gemas</a>
+ <a href="#zonas">Zonas</a>
+ <a href="#guias">Guías</a>
+ <a href="#secretos">Secretos</a>
+ <a href="#actualizaciones">Actualizaciones</a>
+ <a href="#faq">FAQ</a>
+</nav>
+
+<main>
+<div id="inicio" class="bienvenida">
+ <h2>¡Bienvenido! 💚</h2>
+ <p>Bienvenido a Pica una gema Studios :D, encontraras todos los datos del juego.</p>
+ <input id="busqueda" placeholder="🔎 Busca gemas, zonas, guías..." oninput="buscar()">
+ <p id="sinResultados" class="oculto">No encontramos resultados</p>
+</div>
+
+<section id="gemas" class="buscable">
+ <h2>💎 Gemas</h2>
+ <div class="grid">
+  <div class="card">
+   <h3>💚 Esmeralda</h3>
+   <p>Una gema preciosa que puedes conseguir minando piedras.</p>
+   <span class="tag">Gema disponible</span>
+  </div>
+  <div class="card">
+   <h3>✨ Próximas gemas</h3>
+   <p>¡Habrá más gemas de diferentes rarezas en futuras actualizaciones!</p>
+  </div>
+ </div>
+</section>
+
+<section id="zonas" class="buscable">
+ <h2>🌎 Zonas</h2>
+ <div class="grid">
+  <div class="card">
+   <h3>💚 Zona Esmeralda</h3>
+   <p>Explora, mina piedras y consigue esmeraldas. ¡Cuidado con la lava!</p>
+  </div>
+  <div class="card">
+   <h3>🌋 Otras zonas</h3>
+   <p>Todos los mundos estarán disponibles para explorar.</p>
+  </div>
+ </div>
+</section>
+
+<section id="guias" class="buscable">
+ <h2>📖 Guías</h2>
+ <div class="grid">
+  <div class="card">
+   <h3>⛏️ Cómo conseguir gemas</h3>
+   <p>Usa tu pico para romper piedras y obtener gemas.</p>
+  </div>
+  <div class="card">
+   <h3>🏠 Cómo ganar dinero</h3>
+   <p>Lleva tus gemas a tu base y colócalas para generar dinero.</p>
+  </div>
+  <div class="card">
+   <h3>🌋 Cómo sobrevivir</h3>
+   <p>¡Escapa de la lava y busca un lugar seguro antes de que te alcance!</p>
+  </div>
+  <div class="card">
+   <h3>⚡ Mejorar velocidad</h3>
+   <p>Utiliza la caminadora para aumentar tu velocidad.</p>
+  </div>
+ </div>
+</section>
+
+<section id="secretos" class="buscable">
+ <h2>🤫 Secretos</h2>
+ <div class="card">
+  <h3>👀 ¿Hay secretos escondidos?</h3>
+  <p>¡Sí! Explora el mapa y presta atención a los detalles. No revelaremos todos los secretos...</p>
+ </div>
+</section>
+
+<section id="actualizaciones" class="buscable">
+ <h2>🔥 Próximas actualizaciones</h2>
+ <div class="grid">
+  <div class="card">
+   <h3>💎 Nuevas gemas</h3>
+   <p>Más gemas con diferentes rarezas y valores.</p>
+  </div>
+  <div class="card">
+   <h3>🌎 Nuevos mundos</h3>
+   <p>Más lugares para explorar y descubrir.</p>
+  </div>
+  <div class="card">
+   <h3>🪨 Piedras especiales</h3>
+   <p>Piedras únicas con poderes y recompensas diferentes.</p>
+  </div>
+  <div class="card">
+   <h3>🤝 Máquina de intercambios</h3>
+   <p>Intercambia gemas y piedras especiales con otros jugadores.</p>
+  </div>
+ </div>
+</section>
+
+<section id="faq" class="buscable">
+ <h2>❓ Preguntas frecuentes</h2>
+ <div class="card">
+  <h3>¿De qué trata el juego?</h3>
+  <p>De minar gemas, sobrevivir a la lava y mejorar tu base.</p>
+  <h3>¿Puedo robar gemas?</h3>
+  <p>¡Sí! Puedes usar tu bate contra jugadores que llevan una gema.</p>
+  <h3>¿Se puede mejorar la base?</h3>
+  <p>¡Claro! Usa el dinero que consigas para mejorarla.</p>
+  <h3>¿Habrá más actualizaciones?</h3>
+  <p>¡Sí! El juego seguirá creciendo.</p>
+ </div>
+</section>
+
+<section>
+ <h2>💬 Comunidad</h2>
+ <div class="card">
+  <h3>¿Tienes una idea?</h3>
+  <p>Próximamente podrás enviar sugerencias, votar por ideas y comentar en las páginas.</p>
+  <p class="tag">Sistema de comunidad en desarrollo.</p>
+ </div>
+</section>
+
+</main>
+
+<footer>
+ <p>💎 Pica Una Gema Studios</p>
+ <p>Un proyecto de Nova Studios</p>
+ <p>© 2026 - Todos los derechos reservados</p>
+</footer>
+
+<script>
+function buscar(){
+ const texto=document.getElementById("busqueda").value.toLowerCase();
+ const secciones=document.querySelectorAll(".buscable");
+ let encontrados=0;
+
+ secciones.forEach(seccion=>{
+  const coincide=seccion.innerText.toLowerCase().includes(texto);
+  seccion.classList.toggle("oculto",texto!==""&&!coincide);
+  if(coincide) encontrados++;
+ });
+
+ document.getElementById("sinResultados").classList.toggle(
+  "oculto",texto===""||encontrados>0
+ );
+}
+</script>
+</body>
+</html>
+
