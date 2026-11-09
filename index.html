@@ -42,6 +42,27 @@ footer{text-align:center;padding:32px 18px;color:#91ad9b;border-top:1px solid va
 .answer-item{padding:12px 0;border-bottom:1px solid var(--line)}
 .answer-item:last-child{border-bottom:0}
 
+.forum-form{display:flex;flex-direction:column;gap:9px}
+.forum-form label{font-weight:750;color:var(--text)}
+.forum-form input,.forum-form textarea,.reply-form textarea{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#08130d;color:var(--text);font:inherit}
+.forum-form textarea,.reply-form textarea{min-height:95px;resize:vertical}
+.action-button,.reply-button,.report-button{border:0;border-radius:11px;padding:10px 15px;font-weight:800;cursor:pointer}
+.action-button{background:var(--green);color:#07110c}
+.reply-button{background:#174a30;color:#d8ffe5;border:1px solid #328653}
+.report-button{background:#30251b;color:#ffdca8;border:1px solid #76572f}
+.forum-feedback{min-height:20px;color:var(--gold);font-size:13px}
+.forum-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:26px 0 12px}
+.forum-toolbar h3{color:var(--green);margin:0}
+.forum-list{display:grid;gap:14px}
+.forum-post{background:linear-gradient(145deg,#15251c,#0b140f);border:1px solid var(--line);border-radius:16px;padding:17px}
+.forum-post h4{margin:0 0 5px;color:var(--mint);font-size:16px}
+.forum-post p{white-space:pre-wrap;overflow-wrap:anywhere;color:#d0e5d6}
+.forum-meta{font-size:12px;color:var(--muted)}
+.forum-replies{border-top:1px solid var(--line);margin-top:13px;padding-top:10px}
+.forum-reply{padding:9px 12px;margin:8px 0;background:#0b1710;border-radius:10px}
+.reply-form{display:grid;gap:8px;margin-top:12px}
+.reply-form input{padding:10px;border-radius:10px;border:1px solid var(--line);background:#08130d;color:var(--text);font:inherit}
+.forum-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 </style>
 </head>
 <body>
@@ -55,350 +76,386 @@ footer{text-align:center;padding:32px 18px;color:#91ad9b;border-top:1px solid va
 <h1>Bienvenido a <span>Pica Una Gema Studios</span> :D</h1>
 <p>Bienvenido a Pica una gema Studios :D, encontraras todos los datos del juego.</p>
 <p>Adéntrate en una cueva llena de cristales, descubre cómo funcionan las mecánicas y consulta las guías, secretos, sistemas y planes de Nova Studios.</p>
-<div class="search"><input id="search" type="search" placeholder="🔎 Busca: esmeralda, caminadora, lava, bate, guardado..." aria-label="Buscar en la enciclopedia"></div>
-<p class="hero-note">La información se organiza por estado para distinguir lo que está disponible de las ideas futuras.</p>
+<p class="hero-note">Información basada en los detalles compartidos del proyecto. Las funciones planeadas o por confirmar se identifican claramente.</p>
+<div class="search"><input id="search" type="search" placeholder="🔎 Buscar gemas, lava, caminadoras, secretos..." aria-label="Buscar en la enciclopedia"></div>
 </section>
 <main>
-<div id="noResults" class="no-results">🔍 No encontramos resultados. Prueba con otras palabras.</div>
+<div id="noResults" class="no-results">No se encontraron resultados. Prueba con otra palabra.</div>
 
-<section class="section" id="identidad">
-<h2 class="section-title">🌿 Información <span>general</span></h2>
-<p class="lead">Los datos básicos del proyecto y su objetivo principal.</p>
+<section class="section" id="general">
+<h2 class="section-title">💎 Sobre <span>el juego</span></h2>
 <div class="grid">
-<article class="card"><div class="emoji">🎮</div><h3>Nombre</h3><p>Pica Una Gema [Beta].</p></article>
-<article class="card"><div class="emoji">🏢</div><h3>Estudio</h3><p>Nova Studios.</p></article>
-<article class="card"><div class="emoji">👥</div><h3>Servidor</h3><p>La configuración compartida para el juego contempla un máximo de 7 jugadores por servidor.</p></article>
-<article class="card"><div class="emoji">⛏️</div><h3>Objetivo principal</h3><p>Picar piedras, conseguir gemas, llevarlas a una zona segura y colocarlas en tu propia base para generar dinero.</p></article>
+<article class="card"><div class="emoji">⛏️</div><h3>Nombre</h3><p>Pica Una Gema [Beta]</p><span class="pill status-live">En desarrollo</span></article>
+<article class="card"><div class="emoji">🏢</div><h3>Estudio</h3><p>Nova Studios</p></article>
+<article class="card"><div class="emoji">👥</div><h3>Jugadores por servidor</h3><p>El servidor está configurado para un máximo de 7 jugadores.</p></article>
+<article class="card"><div class="emoji">🎯</div><h3>Objetivo</h3><p>Picar piedras, conseguir gemas, llevarlas a una zona segura y colocarlas en tu base para generar dinero.</p></article>
 </div>
-<div class="notice">💡 El ciclo principal es: explorar → picar → recoger una gema → llegar a salvo → depositarla → colocarla en tu base → generar dinero.</div>
 </section>
 
 <section class="section" id="gemas">
-<h2 class="section-title">💎 Enciclopedia de <span>gemas</span></h2>
-<p class="lead">Las gemas son el recurso central de la aventura. La información conocida distingue la gema disponible de los tipos que se han contemplado para el futuro.</p>
+<h2 class="section-title">💎 Tipos de <span>gemas</span></h2>
 <div class="grid">
-<article class="card"><div class="emoji">💚</div><h3>Esmeralda</h3><p>Es la gema que existe en la versión descrita. Se consigue mediante la minería y puede llevarse a la zona segura para guardarla.</p><span class="pill status-live">Disponible según la información compartida</span></article>
-<article class="card"><div class="emoji">❤️</div><h3>Rubí</h3><p>Se ha mencionado como contenido para una futura zona. No debe mostrarse como una gema ya disponible.</p><span class="pill status-plan">Planeado</span></article>
-<article class="card"><div class="emoji">💠</div><h3>Más tipos de gemas</h3><p>Se contempla ampliar la colección con nuevos tipos. Sus nombres, rarezas y valores todavía no están definidos en la información disponible.</p><span class="pill status-plan">Por definir</span></article>
+<article class="card"><div class="emoji">🟢</div><h3>Esmeralda</h3><p>Es la gema disponible actualmente y forma parte del ciclo principal de recolección.</p><span class="pill status-live">Disponible</span></article>
+<article class="card"><div class="emoji">🔴</div><h3>Rubí</h3><p>Se contempla para futuras zonas y contenido adicional.</p><span class="pill status-plan">Planeada</span></article>
+<article class="card"><div class="emoji">💠</div><h3>Otras gemas</h3><p>Se podrán incorporar más tipos de gemas con diferentes rarezas y valores.</p><span class="pill status-plan">Futuro</span></article>
 </div>
-<h3>📦 Llevar y guardar una gema</h3>
+</section><section class="section" id="piedras">
+<h2 class="section-title">🪨 Tipos de <span>piedras</span></h2>
 <div class="grid">
-<article class="card"><h3>Una gema a la vez</h3><p>El jugador solo puede cargar una gema simultáneamente. Para buscar otra, primero debe depositar la que lleva o resolver qué ocurrió con ella.</p></article>
-<article class="card"><h3>Zona segura</h3><p>Al tocar la zona segura, el sistema deposita la gema que el jugador lleva y aumenta el conteo de gemas guardadas del jugador.</p></article>
-<article class="card"><h3>Gema en peligro</h3><p>Mientras la gema sigue en manos del jugador, puede perderse por la lava o caer al suelo si recibe un golpe del bate.</p></article>
+<article class="card"><div class="emoji">🪨</div><h3>Piedra pequeña</h3><p>Es uno de los tamaños de piedra que aparecen en las zonas. Su resistencia depende de su tamaño.</p></article>
+<article class="card"><div class="emoji">⛰️</div><h3>Piedra mediana</h3><p>Tiene un tamaño intermedio y requiere más golpes que una piedra pequeña.</p></article>
+<article class="card"><div class="emoji">🏔️</div><h3>Piedra grande</h3><p>Es la más grande. También puede servir para subir y escapar de la lava.</p></article>
 </div>
-</section>
-
-<section class="section" id="piedras">
-<h2 class="section-title">🪨 Piedras y <span>minería</span></h2>
-<div class="grid">
-<article class="card"><div class="emoji">🪨</div><h3>Piedras pequeñas</h3><p>Una de las tres categorías de tamaño descritas. El tamaño determina la cantidad de golpes necesaria para romper la piedra.</p></article>
-<article class="card"><div class="emoji">⛰️</div><h3>Piedras medianas</h3><p>Tamaño intermedio. La cantidad de golpes depende de su tamaño, no de la zona donde aparece.</p></article>
-<article class="card"><div class="emoji">🗿</div><h3>Piedras grandes</h3><p>Son las de mayor tamaño. Además de poder picarse, pueden utilizarse como plataformas para intentar escapar de la lava.</p></article>
-<article class="card"><div class="emoji">✨</div><h3>Piedras especiales</h3><p>Se ha propuesto añadir 10 piedras especiales por etapa o zona, cada una con un poder único. Podrían colocarse en las bases y generar cantidades diferentes de dinero.</p><span class="pill status-plan">Idea futura</span></article>
-</div>
-<div class="notice">🔄 Las piedras normales tienen un reinicio aproximado cada 3 minutos. El sistema las vuelve a generar aleatoriamente.</div>
-<p class="lead">No se ha definido aquí el número exacto de golpes de cada tamaño; no se inventan valores para completar la tabla.</p>
+<div class="notice">Las piedras reaparecen después de 3 minutos. La cantidad de golpes depende del tamaño de la piedra, no de la zona.</div>
 </section>
 
 <section class="section" id="zonas">
-<h2 class="section-title">🗺️ Zonas y <span>mundos</span></h2>
+<h2 class="section-title">🌎 Zonas y <span>mundos</span></h2>
 <div class="grid">
-<article class="card"><div class="emoji">💚</div><h3>Zona Esmeralda</h3><p>Es la primera zona mencionada y está asociada con la esmeralda.</p><span class="pill status-live">Zona conocida</span></article>
-<article class="card"><div class="emoji">❤️</div><h3>Zona Rubí</h3><p>Se ha propuesto como una zona futura que ampliaría la aventura.</p><span class="pill status-plan">Planeada</span></article>
-<article class="card"><div class="emoji">🌌</div><h3>Otros mundos</h3><p>La expansión con más mundos y zonas forma parte de las ideas de contenido futuro.</p><span class="pill status-plan">Planeados</span></article>
+<article class="card"><div class="emoji">🟢</div><h3>Zona Esmeralda</h3><p>Es la zona principal relacionada con la gema esmeralda.</p><span class="pill status-live">Disponible</span></article>
+<article class="card"><div class="emoji">🔴</div><h3>Zona Rubí</h3><p>Una zona contemplada para futuras actualizaciones.</p><span class="pill status-plan">Planeada</span></article>
+<article class="card"><div class="emoji">🌌</div><h3>Futuros mundos</h3><p>Se planea ampliar el universo del juego con más zonas, piedras y gemas.</p><span class="pill status-plan">Futuro</span></article>
 </div>
-<div class="notice">🔓 Según la información del diseño compartido, todas las zonas están desbloqueadas desde el inicio. Las zonas posteriores se plantean más peligrosas por su lava y sus piedras más difíciles.</div>
+<div class="notice">Todas las zonas están desbloqueadas desde el inicio, según el diseño actual del juego.</div>
 </section>
 
 <section class="section" id="lava">
 <h2 class="section-title">🌋 Sistema de <span>lava</span></h2>
-<p class="lead">La lava es un peligro del mapa. Obliga a prestar atención al aviso y buscar un lugar elevado.</p>
 <div class="grid">
-<article class="card"><h3>⏱️ Aviso y cuenta atrás</h3><p>El ciclo incluye un tiempo de preparación. Cuando faltan 5 segundos aparece el aviso «La lava está subiendo en 5-4-3-2-1».</p></article>
-<article class="card"><h3>🧗 Escapar subiendo</h3><p>Las piedras grandes se pueden escalar y sirven como puntos elevados para intentar evitar la lava.</p></article>
-<article class="card"><h3>💥 Si la lava te alcanza</h3><p>El personaje muere y pierde la gema que llevaba. Después reaparece en su propia base.</p></article>
-<article class="card"><h3>🪨 Las piedras permanecen</h3><p>Las piedras no se destruyen por el contacto con la lava, de acuerdo con las reglas descritas.</p></article>
-<article class="card"><h3>🌙 Reinicio nocturno</h3><p>Durante la noche, el sistema puede teletransportar a los jugadores al SpawnLocation y reiniciar las piedras.</p></article>
-<article class="card"><h3>🎒 Gema transportada</h3><p>La gema que todavía llevas no está asegurada. La zona segura es el lugar donde se deposita en el inventario.</p></article>
+<article class="card"><h3>⏱️ Aviso de lava</h3><p>Cuando faltan 5 segundos, aparece el aviso: «La lava está subiendo en 5-4-3-2-1».</p></article>
+<article class="card"><h3>🔥 Contacto con lava</h3><p>Si la lava toca al jugador, este muere y pierde la gema que llevaba consigo. Después reaparece en su propia base.</p></article>
+<article class="card"><h3>🧗 Escapar</h3><p>Las piedras grandes pueden utilizarse para subir y mantenerse lejos de la lava.</p></article>
+<article class="card"><h3>🌙 Ciclo nocturno</h3><p>Durante la noche, los jugadores son enviados al SpawnLocation y las piedras se reinician.</p></article>
 </div>
-<div class="notice warning">⚠️ Consejo: no confundas llevar una gema con haberla guardado. Hasta depositarla en la zona segura, puedes perderla.</div>
+<div class="notice">Las piedras no son destruidas por la lava. El reinicio de piedras también forma parte del ciclo de 3 minutos.</div>
 </section>
 
 <section class="section" id="bases">
-<h2 class="section-title">🏡 Bases y <span>dinero</span></h2>
-<p class="lead">Las bases son espacios personales para colocar gemas y producir dinero. Importante: las bases NO se mejoran.</p>
+<h2 class="section-title">🏠 Sistema de <span>bases</span></h2>
 <div class="grid">
-<article class="card"><h3>💎 Colocar gemas</h3><p>El jugador puede colocar gemas guardadas en los espacios de su propia base. El sistema de colocación documentado contempla un máximo configurado de 40 gemas y una separación mínima de 2.5 studs.</p></article>
-<article class="card"><h3>💰 Producción automática</h3><p>Las gemas colocadas generan dinero cada segundo. Las gemas de mayor rareza se plantean con una producción superior.</p></article>
-<article class="card"><h3>📏 Espacios</h3><p>El sistema de colocación verifica que la gema se coloque dentro del área propia y que respete la distancia mínima entre gemas.</p></article>
-<article class="card"><h3>👀 Visitar otras bases</h3><p>Puedes visitar las bases de otros jugadores para verlas. No puedes robar ni modificar las gemas colocadas en bases ajenas.</p></article>
+<article class="card"><h3>💎 Colocar gemas</h3><p>Después de guardar una gema en tu inventario, puedes colocarla en tu propia base para generar dinero.</p></article>
+<article class="card"><h3>💰 Generar dinero</h3><p>Las gemas colocadas producen dinero automáticamente cada segundo. Las gemas más raras generan más.</p></article>
+<article class="card"><h3>🔒 Protección</h3><p>Cada jugador tiene su propia base. Los demás pueden visitarla y observar, pero no pueden robar ni modificar tus gemas.</p></article>
+<article class="card"><h3>📦 Límite de colocación</h3><p>El sistema de colocación compartido contempla un máximo de 40 gemas y una separación mínima de 2.5 studs.</p></article>
 </div>
-<div class="notice">🚫 Corrección oficial de esta enciclopedia: las bases no tienen niveles de mejora ni una lista de precios de mejoras. Los precios que se habían atribuido anteriormente a las bases no deben utilizarse.</div>
+<div class="notice warning">IMPORTANTE: las bases NO se mejoran. Lo que se mejora son las caminadoras.</div>
 </section>
 
 <section class="section" id="caminadoras">
-<h2 class="section-title">🏃 Mejoras de <span>caminadoras</span></h2>
-<p class="lead">¡Esta es la sección de mejoras correcta! Las caminadoras son las que se mejoran para aumentar el entrenamiento y la velocidad del jugador.</p>
+<h2 class="section-title">🏃 Caminadoras y <span>velocidad</span></h2>
 <div class="grid">
-<article class="card"><h3>⚡ Función</h3><p>La caminadora permite entrenar y aumentar la velocidad del personaje. No es una mejora de la base.</p></article>
-<article class="card"><h3>📈 Ganancia base</h3><p>La configuración del sistema compartido utiliza una ganancia base de 1, afectada por el multiplicador del nivel.</p></article>
-<article class="card"><h3>✖️ Multiplicadores</h3><p>El sistema documentado contempla multiplicadores que van desde X1 hasta X256.</p></article>
-<article class="card"><h3>💾 Guardado</h3><p>El sistema usa un DataStore llamado VelocidadJugadores_v1 y contempla guardados periódicos cada 60 segundos.</p></article>
+<article class="card"><h3>⚡ ¿Para qué sirven?</h3><p>Las caminadoras permiten aumentar la velocidad del jugador para recorrer el mapa más rápido.</p></article>
+<article class="card"><h3>📈 Mejoras</h3><p>El sistema contempla multiplicadores de velocidad desde X1 hasta X256, dependiendo del nivel.</p></article>
+<article class="card"><h3>💾 Guardado</h3><p>El sistema utiliza un DataStore llamado VelocidadJugadores_v1 y contempla guardados automáticos cada 60 segundos.</p></article>
 </div>
-<h3>Multiplicadores documentados en el sistema</h3>
-<div class="table-wrap"><table><thead><tr><th>Nivel</th><th>Multiplicador</th></tr></thead><tbody>
-<tr><td>1</td><td>X1</td></tr><tr><td>2</td><td>X2</td></tr><tr><td>3</td><td>X4</td></tr><tr><td>4</td><td>X8</td></tr><tr><td>5</td><td>X16</td></tr><tr><td>6</td><td>X32</td></tr><tr><td>7</td><td>X64</td></tr><tr><td>8</td><td>X128</td></tr><tr><td>9</td><td>X256</td></tr>
-</tbody></table></div>
-<div class="notice">📌 La configuración que conocemos también menciona un requisito de nivel 2 en una parte del sistema. Los requisitos y precios exactos de cada mejora no están completamente confirmados aquí, así que no se inventan.</div>
+<div class="notice">Los requisitos y precios exactos de cada nivel todavía deben confirmarse.</div>
 </section>
 
 <section class="section" id="herramientas">
 <h2 class="section-title">🛠️ Herramientas y <span>objetos</span></h2>
 <div class="grid">
-<article class="card"><div class="emoji">⛏️</div><h3>Pico</h3><p>Herramienta utilizada para picar las piedras y obtener gemas. Se han considerado mejoras futuras del pico, pero sus niveles y precios todavía no están definidos.</p><span class="pill status-plan">Mejoras futuras planeadas</span></article>
-<article class="card"><div class="emoji">🏏</div><h3>Bate</h3><p>Permite golpear a otro jugador que lleva una gema. El sistema descrito utiliza un intervalo de espera de 0.8 segundos entre golpes para evitar activaciones demasiado seguidas.</p></article>
-<article class="card"><div class="emoji">🏃</div><h3>Caminadora</h3><p>Se utiliza para entrenar, aumentar velocidad y acceder a multiplicadores superiores mediante sus mejoras.</p></article>
-<article class="card"><div class="emoji">💎</div><h3>Herramienta de gema</h3><p>La gema transportada se representa como una herramienta llamada Gema en el sistema de recogida y transporte descrito.</p></article>
+<article class="card"><div class="emoji">⛏️</div><h3>Pico</h3><p>Se utiliza para picar las piedras y conseguir gemas. Las mejoras futuras del pico están pendientes de definir.</p></article>
+<article class="card"><div class="emoji">🏏</div><h3>Bate</h3><p>Permite golpear a jugadores que llevan una gema. Al recibir el golpe, pueden soltarla para que otra persona la recoja.</p></article>
+<article class="card"><div class="emoji">💎</div><h3>Gema transportada</h3><p>El jugador solo puede llevar una gema a la vez. Al depositarla en la zona segura, puede recoger otra.</p></article>
+<article class="card"><div class="emoji">🏃</div><h3>Caminadora</h3><p>Se utiliza para mejorar la velocidad del jugador mediante sus niveles.</p></article>
 </div>
+<div class="notice">El bate tiene un tiempo de espera de 0.8 segundos entre golpes, según el script compartido.</div>
 </section>
 
 <section class="section" id="sistemas">
-<h2 class="section-title">⚙️ Sistemas internos <span>explicados</span></h2>
-<p class="lead">Esta sección explica la función de los sistemas y scripts conocidos sin publicar sus códigos completos.</p>
+<h2 class="section-title">⚙️ Sistemas y <span>mecánicas</span></h2>
 <div class="grid">
-<article class="card"><h3>💎 Recogida y transporte</h3><p>Gestiona la gema que recoge el jugador, la herramienta que la representa y su unión al personaje mientras la transporta. Solo se permite llevar una a la vez.</p></article>
-<article class="card"><h3>🛡️ Depósito seguro</h3><p>Detecta cuando el jugador toca la zona segura, deposita la gema transportada y actualiza el inventario o contador correspondiente.</p></article>
-<article class="card"><h3>🏏 Golpe y caída</h3><p>El bate aplica el golpe al jugador que lleva una gema. La gema puede soltarse en el mundo y quedar disponible para que alguien la recoja.</p></article>
-<article class="card"><h3>🌋 Muerte por lava</h3><p>La regla de juego indica que morir por lava hace perder la gema transportada. La lógica de muerte debe distinguirse de un depósito seguro.</p></article>
-<article class="card"><h3>🏡 Colocación en base</h3><p>El sistema de colocación valida que el jugador use su propia zona, respeta el máximo configurado de 40 gemas y comprueba la distancia mínima de 2.5 studs entre colocaciones.</p></article>
-<article class="card"><h3>💰 Producción de dinero</h3><p>Calcula la generación de dinero por las gemas colocadas en la base. La producción se ejecuta automáticamente cada segundo según la configuración de cada gema.</p></article>
-<article class="card"><h3>🏃 Velocidad y caminadora</h3><p>Administra el entrenamiento, los niveles y los multiplicadores. La configuración compartida utiliza el DataStore VelocidadJugadores_v1 y un guardado periódico de 60 segundos.</p></article>
-<article class="card"><h3>🌙 Ciclo de noche</h3><p>Controla el momento nocturno, el regreso de los jugadores al SpawnLocation y el reinicio de las piedras.</p></article>
-<article class="card"><h3>📢 Anuncios</h3><p>El sistema de anuncios recibe mensajes y los muestra a los jugadores con una interfaz, animaciones, sonido y una cola para organizar mensajes.</p></article>
-<article class="card"><h3>🎉 Evento de caminadora gigante</h3><p>Se ha compartido un evento de caminadora gigante que otorga 100 de velocidad por segundo a quienes la usan y tiene una duración configurada de 180 segundos.</p></article>
-<article class="card"><h3>🏆 Clasificaciones</h3><p>Se contemplan tablas para dinero, gemas recolectadas y velocidad. Son distintas formas de comparar el progreso.</p></article>
-<article class="card"><h3>🔒 Validación del servidor</h3><p>Las acciones importantes deben verificarse en el servidor y no confiar únicamente en datos enviados por el cliente. Esto ayuda a evitar trampas y abusos.</p></article>
+<article class="card"><h3>💎 Recoger gemas</h3><p>El jugador interactúa con las gemas para recogerlas. El sistema las representa mediante una herramienta llamada Gema.</p></article>
+<article class="card"><h3>🛡️ Zona segura</h3><p>Al tocar la zona segura, la gema que lleva el jugador se deposita en su inventario y queda protegida.</p></article>
+<article class="card"><h3>🏏 Soltar gemas</h3><p>Cuando un jugador recibe un golpe del bate mientras lleva una gema, esta puede caer al suelo y quedar disponible para recoger.</p></article>
+<article class="card"><h3>💀 Muerte y reaparición</h3><p>El contacto con la lava provoca la muerte del jugador, la pérdida de la gema transportada y su reaparición en su base.</p></article>
+<article class="card"><h3>🪨 Reinicio de piedras</h3><p>Las piedras se reinician cada 3 minutos y vuelven a aparecer en posiciones aleatorias.</p></article>
+<article class="card"><h3>🌙 Noche</h3><p>El ciclo nocturno envía a los jugadores al SpawnLocation y reinicia las piedras.</p></article>
+<article class="card"><h3>📢 Anuncios</h3><p>El juego contempla un sistema de anuncios para mostrar mensajes a los jugadores.</p></article>
+<article class="card"><h3>🏆 Clasificaciones</h3><p>Hay tablas de clasificación para dinero, gemas recolectadas y velocidad.</p></article>
 </div>
 </section>
 
 <section class="section" id="admin">
-<h2 class="section-title">🛡️ Panel de administración y <span>eventos</span></h2>
-<p class="lead">El proyecto incluye un panel administrativo y sistemas de control para gestionar el juego. Esta documentación describe sus funciones de manera general, no sus códigos ni credenciales.</p>
+<h2 class="section-title">👑 Panel de <span>administración</span></h2>
+<p class="lead">El proyecto cuenta con un panel administrativo para controlar diferentes aspectos del juego.</p>
 <div class="grid">
-<article class="card"><h3>👤 Administración</h3><p>El panel contempla acciones administrativas sobre jugadores, estadísticas, herramientas, gemas y estado del juego. El acceso debe estar restringido a administradores autorizados.</p></article>
-<article class="card"><h3>❤️ Recuperación y estado</h3><p>Entre las acciones descritas se encuentran curar, aplicar protección temporal, congelar, eliminar o reaparecer personajes y restablecer estados.</p></article>
-<article class="card"><h3>📍 Gestión de jugadores</h3><p>El panel contempla teletransportar jugadores, consultar información y gestionar expulsiones. Las acciones globales requieren especial cuidado para no afectar a personas equivocadas.</p></article>
-<article class="card"><h3>💎 Gestión de objetos</h3><p>Se han descrito funciones administrativas para entregar gemas, modificar inventarios, romper piedras y limpiar gemas sueltas.</p></article>
-<article class="card"><h3>📣 Anuncios globales</h3><p>Los anuncios pueden enviarse a todos los jugadores de un servidor y el sistema contempla comunicación entre servidores.</p></article>
-<article class="card"><h3>🎊 Eventos</h3><p>El control de eventos permite iniciar o detener eventos, incluida la caminadora gigante.</p></article>
+<article class="card"><h3>❤️ Jugadores</h3><p>Acciones de curación, reaparición, congelación y otras herramientas administrativas.</p></article>
+<article class="card"><h3>💰 Recursos</h3><p>Herramientas para administrar dinero, velocidad y gemas.</p></article>
+<article class="card"><h3>🌍 Eventos</h3><p>Control de eventos y anuncios para los jugadores.</p></article>
+<article class="card"><h3>🧹 Limpieza</h3><p>Herramientas para limpiar gemas sueltas y reiniciar ciertos elementos del juego.</p></article>
 </div>
-<div class="notice warning">🔐 La seguridad es importante: las comprobaciones de permisos deben hacerse en el servidor. Las acciones globales como expulsar o reiniciar deben probarse cuidadosamente para evitar afectar a todos por error.</div>
+<div class="notice warning">Las funciones administrativas están reservadas para personas autorizadas. No se publican credenciales ni datos privados.</div>
+</section><section class="section" id="eventos">
+<h2 class="section-title">🎉 Eventos y <span>actualizaciones</span></h2>
+<div class="grid">
+<article class="card"><h3>🏃 Caminadora gigante</h3><p>Evento especial en el que los jugadores que participan reciben 100 puntos de velocidad por segundo. Su duración prevista es de 180 segundos.</p><span class="pill status-plan">Evento especial</span></article>
+<article class="card"><h3>🏆 1000 jugadores</h3><p>Al alcanzar 1000 jugadores simultáneos, se planea organizar un evento especial y publicar un video de agradecimiento.</p><span class="pill status-plan">Meta de comunidad</span></article>
+<article class="card"><h3>🪨 Piedras especiales</h3><p>Se planean 10 piedras especiales por etapa, cada una con poderes únicos y diferentes cantidades de dinero generado.</p><span class="pill status-plan">Planeado</span></article>
+<article class="card"><h3>📋 Próximas actualizaciones</h3><p>El juego podrá mostrar una sección de próximas actualizaciones para que los jugadores conozcan las novedades previstas.</p></article>
+</div>
 </section>
 
 <section class="section" id="intercambios">
-<h2 class="section-title">🔄 Máquina de <span>intercambios</span></h2>
+<h2 class="section-title">🤝 Máquina de <span>intercambios</span></h2>
 <div class="grid">
-<article class="card"><h3>💎 Qué se intercambia</h3><p>La idea actual contempla intercambiar gemas y piedras especiales, no dinero.</p></article>
-<article class="card"><h3>🌐 Otros servidores</h3><p>Se ha propuesto que la búsqueda de jugadores pueda funcionar incluso si están en servidores diferentes.</p></article>
-<article class="card"><h3>♾️ Límite</h3><p>La propuesta compartida no establece un límite fijo de intercambios.</p></article>
-<article class="card"><h3>📍 Dónde usarla</h3><p>La idea es permitir el intercambio en el lobby o en la base, pero no mientras la lava esté activa.</p></article>
+<article class="card"><h3>💎 ¿Qué se podrá intercambiar?</h3><p>Gemas y piedras especiales. El dinero no formará parte de los intercambios.</p></article>
+<article class="card"><h3>🌐 Otros servidores</h3><p>El sistema planea permitir buscar jugadores aunque estén en servidores diferentes.</p></article>
+<article class="card"><h3>📍 Lugares permitidos</h3><p>Los intercambios estarán disponibles en el lobby o en las bases.</p></article>
+<article class="card"><h3>🌋 Restricción</h3><p>No se podrán realizar intercambios mientras la lava esté subiendo.</p></article>
 </div>
-<span class="pill status-plan">Sistema planeado, no confirmado como disponible</span>
+<span class="pill status-plan">Sistema planeado</span>
 </section>
 
 <section class="section" id="secretos">
 <h2 class="section-title">🕵️ Secretos y <span>recompensas</span></h2>
 <div class="grid">
-<article class="card"><div class="emoji">💰</div><h3>Gema escondida del lobby</h3><p>Se ha planteado esconder una gema en el lobby. La recompensa propuesta es de $100,000 y podría reclamarse una sola vez por jugador.</p><span class="pill status-check">Por confirmar en el juego</span></article>
-<article class="card"><div class="emoji">🎥</div><h3>Revelación del secreto</h3><p>También se comentó la idea de revelar el secreto mediante un video con un mensaje del estilo «Este secreto nadie lo sabía de mi juego».</p><span class="pill status-plan">Idea de contenido</span></article>
+<article class="card"><div class="emoji">💎</div><h3>Gema secreta del lobby</h3><p>Se planea esconder una gema en el lobby para que los jugadores puedan descubrirla.</p></article>
+<article class="card"><div class="emoji">💰</div><h3>Recompensa especial</h3><p>La recompensa prevista es de $100,000 y se podrá reclamar una sola vez por jugador.</p></article>
+<article class="card"><div class="emoji">🎥</div><h3>Video del secreto</h3><p>La idea es revelar el secreto en un video con el mensaje: «¡Este secreto nadie lo sabía de mi juego!».</p></article>
 </div>
+<span class="pill status-check">Pendiente de confirmar</span>
 </section>
 
 <section class="section" id="comunidad">
-<h2 class="section-title">🤝 Comunidad, sugerencias y <span>moderación</span></h2>
+<h2 class="section-title">👥 Comunidad y <span>participación</span></h2>
 <div class="grid">
-<article class="card"><h3>💡 Sugerencias en la web</h3><p>La idea es que los jugadores envíen sugerencias desde la página web, no desde una interfaz dentro del juego.</p></article>
-<article class="card"><h3>🗳️ Votaciones</h3><p>Las sugerencias se votarían antes de cada actualización. La votación permanecería abierta hasta que se publique esa actualización.</p></article>
-<article class="card"><h3>📊 Resultados públicos</h3><p>Los resultados generales serían visibles para la comunidad, pero los votos individuales permanecerían privados.</p></article>
-<article class="card"><h3>🚀 Próximas actualizaciones</h3><p>Las sugerencias elegidas aparecerían en una sección llamada «Próximas actualizaciones». No se mostrarían etiquetas de progreso.</p></article>
-<article class="card"><h3>🛡️ Moderadores</h3><p>Podrían retirar comentarios inapropiados, revisar reportes, responder preguntas y ocultar spam.</p></article>
-<article class="card"><h3>👑 Control del propietario</h3><p>Solo el propietario puede nombrar moderadores. Los moderadores no pueden nombrar a otros ni cambiar la configuración del sitio.</p></article>
-<article class="card"><h3>💬 Comentarios</h3><p>Los jugadores podrían comentar en las páginas de información y los moderadores podrían responderles.</p></article>
-<article class="card"><h3>🔔 Notificaciones</h3><p>Se quieren notificaciones para actualizaciones, eventos, mantenimiento y anuncios importantes.</p></article>
-<article class="card"><h3>🏅 Equipo de la Comunidad</h3><p>Quienes reporten errores útiles podrían recibir reconocimiento con su nombre de usuario de Roblox, siempre que acepten aparecer.</p></article>
-</div>
-<div class="notice warning">🧩 Importante: esta página HTML por sí sola no implementa cuentas, comentarios, reportes, moderadores, votos ni notificaciones reales. Esas funciones necesitan una base de datos y un backend seguro.</div>
-</section>
-
-<section class="section" id="hitos">
-<h2 class="section-title">🎉 Eventos y <span>metas comunitarias</span></h2>
-<div class="grid">
-<article class="card"><h3>🏆 Meta de 1,000 jugadores simultáneos</h3><p>Se propuso celebrar el logro de 1,000 jugadores concurrentes con un evento y un video de agradecimiento.</p><span class="pill status-plan">Idea futura</span></article>
-<article class="card"><h3>✨ Diez piedras especiales por etapa</h3><p>La propuesta contempla 10 piedras especiales por cada etapa, cada una con un poder único. Podrían colocarse en las bases para producir diferentes cantidades de dinero.</p><span class="pill status-plan">Idea futura</span></article>
-<article class="card"><h3>🎥 Jugar con creadores</h3><p>Si entra un YouTuber conocido, la intención es jugar con esa persona sin regalarle ventajas o artículos gratuitos.</p></article>
+<article class="card"><h3>💡 Sugerencias</h3><p>Los jugadores podrán proponer ideas para futuras actualizaciones. La decisión final sobre qué agregar corresponde al creador.</p></article>
+<article class="card"><h3>🗳️ Votaciones</h3><p>Las sugerencias podrán recibir votos hasta que se publique la actualización correspondiente. Los resultados serán públicos, pero los votos individuales serán privados.</p></article>
+<article class="card"><h3>🔔 Notificaciones</h3><p>Se contemplan avisos de actualizaciones, eventos, mantenimiento y anuncios importantes.</p></article>
+<article class="card"><h3>🛡️ Moderadores</h3><p>El creador podrá nombrar moderadores. Estos no podrán cambiar la configuración del sitio ni nombrar a otros moderadores.</p></article>
+<article class="card"><h3>🐛 Reportes</h3><p>Los jugadores podrán reportar errores. Quienes ayuden responsablemente podrán recibir reconocimiento si aceptan aparecer con su usuario de Roblox.</p></article>
+<article class="card"><h3>🎬 Creadores de contenido</h3><p>Si un YouTuber famoso entra al juego, el creador quiere jugar con él sin regalarle ventajas o recursos especiales.</p></article>
 </div>
 </section>
 
-<section class="section" id="equilibrio">
-<h2 class="section-title">⚖️ Progreso y <span>competencia</span></h2>
+<section class="section" id="ranking">
+<h2 class="section-title">🏆 Clasificaciones y <span>progreso</span></h2>
 <div class="grid">
-<article class="card"><h3>💰 Dinero</h3><p>Una dimensión del progreso: cuánto dinero ha conseguido el jugador.</p></article>
-<article class="card"><h3>💎 Gemas raras</h3><p>Otra dimensión: la colección y obtención de gemas de mayor rareza.</p></article>
-<article class="card"><h3>🏡 Base</h3><p>Se considera el desarrollo y contenido de la base como parte del progreso, sin mejoras de nivel para la base.</p></article>
-<article class="card"><h3>⚡ Velocidad y pico</h3><p>La velocidad y las mejoras futuras del pico también cuentan como dimensiones del progreso.</p></article>
+<article class="card"><h3>💰 Dinero</h3><p>Clasificación de jugadores según el dinero que hayan conseguido.</p></article>
+<article class="card"><h3>💎 Gemas recolectadas</h3><p>Clasificación por cantidad de gemas recolectadas.</p></article>
+<article class="card"><h3>⚡ Velocidad</h3><p>Clasificación de jugadores según su velocidad.</p></article>
 </div>
-<p class="lead">La idea expresada es que dinero, gemas raras, base y velocidad/pico tengan importancia al comparar quién es el jugador más poderoso.</p>
-</section>
-
-
-<section class="section" id="preguntas">
-<h2 class="section-title">💬 Preguntas y <span>respuestas</span></h2>
-<p class="lead">¿Tienes una duda sobre Pica Una Gema? Envíala aquí. Las respuestas que publique el equipo podrán aparecer para que toda la comunidad las consulte.</p>
-<div class="grid">
-<article class="card">
-<h3>✍️ Enviar una pregunta</h3>
-<form id="questionForm">
-<label for="questionName">Nombre o usuario de Roblox (opcional)</label>
-<input id="questionName" maxlength="24" autocomplete="off" placeholder="Tu usuario">
-<label for="questionText">Tu pregunta</label>
-<textarea id="questionText" maxlength="500" required placeholder="Escribe tu pregunta aquí..."></textarea>
-<p class="small">No incluyas datos personales. Los mensajes con lenguaje inapropiado o spam serán rechazados.</p>
-<button class="action-button" type="submit">Enviar pregunta</button>
-<p id="questionFeedback" role="status" aria-live="polite"></p>
-</form>
-</article>
-<article class="card">
-<h3>📢 Respuestas publicadas</h3>
-<p>Cuando una pregunta sea revisada y respondida por el equipo, podrá aparecer aquí para ayudar a otros jugadores.</p>
-<div id="publicAnswers"><p class="small">Todavía no hay respuestas publicadas.</p></div>
-</article>
-</div>
-<div class="notice warning">🔒 Esta es la interfaz inicial. Para que las preguntas lleguen a tu panel privado y las respuestas se publiquen para todos los visitantes, falta conectar una base de datos y un servidor seguro. Guardarlas solamente en el navegador no las compartiría con otros jugadores.</div>
 </section>
 
 <section class="section" id="faq">
 <h2 class="section-title">❓ Preguntas <span>frecuentes</span></h2>
-<p class="lead">Respuestas basadas en las reglas y planes que se han compartido. Abre una pregunta para leerla.</p>
-<div id="faqList">
-<details><summary>¿Cuál es el objetivo principal?</summary><p>Picar piedras, conseguir gemas, llevarlas a la zona segura y colocarlas en tu base para generar dinero.</p></details>
-<details><summary>¿Cuántas gemas puedo cargar al mismo tiempo?</summary><p>Solo una gema a la vez.</p></details>
-<details><summary>¿Cuándo queda guardada mi gema?</summary><p>Cuando llegas a la zona segura y el sistema la deposita en tu inventario.</p></details>
-<details><summary>¿Qué ocurre si la lava me alcanza?</summary><p>El personaje muere, pierde la gema que llevaba y reaparece en su base.</p></details>
-<details><summary>¿Puedo subirme a las piedras?</summary><p>Sí, las piedras grandes pueden utilizarse para subir e intentar escapar de la lava.</p></details>
-<details><summary>¿La lava destruye las piedras?</summary><p>No. Según las reglas descritas, las piedras no se destruyen por la lava.</p></details>
-<details><summary>¿Cada cuánto se reinician las piedras?</summary><p>Aproximadamente cada 3 minutos, con generación aleatoria de nuevas piedras.</p></details>
-<details><summary>¿Qué ocurre durante la noche?</summary><p>El sistema nocturno puede devolver a los jugadores al SpawnLocation y reiniciar las piedras.</p></details>
-<details><summary>¿Todas las zonas están desbloqueadas?</summary><p>La información compartida indica que todas las zonas están desbloqueadas desde el principio.</p></details>
-<details><summary>¿Las zonas posteriores son más peligrosas?</summary><p>La idea descrita es que las zonas posteriores tengan lava más peligrosa y piedras más difíciles.</p></details>
-<details><summary>¿Cuántos golpes necesita cada piedra?</summary><p>Depende del tamaño de la piedra, no de la zona. No tenemos aquí los números exactos de golpes para cada tamaño.</p></details>
-<details><summary>¿Qué gema está disponible?</summary><p>La esmeralda es la gema que se ha identificado como disponible. El rubí se ha mencionado como contenido futuro.</p></details>
-<details><summary>¿Qué hace la zona segura?</summary><p>Deposita la gema que lleva el jugador y actualiza su inventario de gemas guardadas.</p></details>
-<details><summary>¿Qué pasa si otro jugador me golpea con el bate?</summary><p>Puedes soltar la gema que llevas. Una vez en el suelo, otro jugador puede recogerla.</p></details>
-<details><summary>¿Cuánto tarda el bate entre golpes?</summary><p>El script compartido utiliza un tiempo de espera de 0.8 segundos.</p></details>
-<details><summary>¿Cuánto tiempo se queda una gema caída?</summary><p>La descripción del sistema indica que permanece en el suelo hasta que alguien la recoge.</p></details>
-<details><summary>¿Puedo llevar dos gemas?</summary><p>No. El sistema descrito permite cargar una sola gema a la vez.</p></details>
-<details><summary>¿Puedo robar objetos de otra base?</summary><p>No. Puedes visitar otras bases, pero no interactuar con sus objetos ni robarlos.</p></details>
-<details><summary>¿Las bases se mejoran?</summary><p>¡No! Las bases no tienen mejoras de nivel. La mejora corresponde a las caminadoras.</p></details>
-<details><summary>¿Para qué sirven las bases?</summary><p>Para colocar las gemas guardadas y producir dinero automáticamente cada segundo.</p></details>
-<details><summary>¿Cuántas gemas se pueden colocar en una base?</summary><p>El script de colocación compartido tiene una configuración MAX_GEMAS de 40.</p></details>
-<details><summary>¿Qué distancia mínima hay entre gemas colocadas?</summary><p>El script compartido utiliza DISTANCIA_MINIMA de 2.5 studs.</p></details>
-<details><summary>¿Las gemas generan dinero?</summary><p>Sí. Las gemas colocadas producen dinero automáticamente. La cantidad depende de la configuración de producción de cada gema.</p></details>
-<details><summary>¿Para qué sirven las caminadoras?</summary><p>Para entrenar y aumentar la velocidad del jugador.</p></details>
-<details><summary>¿Qué multiplicadores contempla el sistema?</summary><p>La configuración documentada contempla X1, X2, X4, X8, X16, X32, X64, X128 y X256.</p></details>
-<details><summary>¿Cuál es el multiplicador máximo documentado?</summary><p>X256.</p></details>
-<details><summary>¿Cada cuánto se guarda la velocidad?</summary><p>El script compartido contempla un guardado automático cada 60 segundos.</p></details>
-<details><summary>¿Cómo se llama el DataStore de velocidad?</summary><p>VelocidadJugadores_v1.</p></details>
-<details><summary>¿El pico tendrá mejoras?</summary><p>Se han planeado mejoras para el pico, pero los niveles y precios todavía no están definidos.</p></details>
-<details><summary>¿Hay mascotas?</summary><p>No se ha descrito un sistema de mascotas en la información disponible.</p></details>
-<details><summary>¿Hay rebirths?</summary><p>No se ha descrito un sistema de renacimientos o rebirths.</p></details>
-<details><summary>¿Cuántos jugadores entran en un servidor?</summary><p>La configuración compartida indica un máximo de 7 jugadores.</p></details>
-<details><summary>¿Qué es la máquina de intercambios?</summary><p>Una función planeada para intercambiar gemas y piedras especiales.</p></details>
-<details><summary>¿Se podrá intercambiar dinero?</summary><p>No está incluido en la idea actual. Se contemplan gemas y piedras especiales, no dinero.</p></details>
-<details><summary>¿Se podrá intercambiar con jugadores de otros servidores?</summary><p>La propuesta contempla buscar jugadores incluso si están en otros servidores.</p></details>
-<details><summary>¿Dónde se podrá usar la máquina?</summary><p>La idea es permitirla en el lobby o en la base, pero no durante la lava.</p></details>
-<details><summary>¿Qué es la gema escondida?</summary><p>Es una idea de secreto del lobby que daría $100,000 una sola vez por jugador. Su implementación debe confirmarse.</p></details>
-<details><summary>¿Qué son las piedras especiales?</summary><p>Una propuesta de piedras con poderes únicos que podrían colocarse en las bases y generar distintas cantidades de dinero.</p></details>
-<details><summary>¿Cuántas piedras especiales se han propuesto?</summary><p>Se propusieron 10 por cada etapa o zona.</p></details>
-<details><summary>¿Habrá una celebración por 1,000 jugadores simultáneos?</summary><p>Se ha propuesto un evento y un video de agradecimiento para celebrar ese logro.</p></details>
-<details><summary>¿Cómo funcionan las sugerencias?</summary><p>La idea es recibirlas en la página web y permitir que la comunidad vote antes de cada actualización.</p></details>
-<details><summary>¿Cuándo termina una votación?</summary><p>La votación se mantendría abierta hasta que salga la actualización correspondiente.</p></details>
-<details><summary>¿Los votos individuales serán públicos?</summary><p>No. La propuesta es mostrar los resultados generales y mantener privados los votos individuales.</p></details>
-<details><summary>¿Quién decide qué sugerencias se agregan?</summary><p>El propietario del juego conserva la decisión final.</p></details>
-<details><summary>¿Qué pueden hacer los moderadores de la web?</summary><p>Retirar comentarios inapropiados, revisar reportes, responder preguntas y ocultar spam.</p></details>
-<details><summary>¿Los moderadores pueden nombrar a otros moderadores?</summary><p>No. Solo el propietario puede nombrarlos. Los moderadores tampoco pueden cambiar la configuración del sitio.</p></details>
-<details><summary>¿Habrá notificaciones?</summary><p>Se desean notificaciones de actualizaciones, eventos, mantenimiento y anuncios.</p></details>
-<details><summary>¿Cómo se reconocen los reportes útiles?</summary><p>Se ha propuesto reconocer a quienes reporten errores importantes en el Equipo de la Comunidad, con su usuario si aceptan.</p></details>
-<details><summary>¿Qué tablas de clasificación se contemplan?</summary><p>Dinero, gemas recolectadas y velocidad.</p></details>
-<details><summary>¿Se puede jugar con un YouTuber sin darle objetos gratis?</summary><p>La intención compartida es jugar con creadores que entren al juego sin regalarles ventajas.</p></details>
-<details><summary>¿La página ya tiene comentarios y votaciones funcionales?</summary><p>No por el simple hecho de publicar este archivo. Se necesita una base de datos y un backend seguro para activar cuentas, comentarios, moderación, reportes y votos.</p></details>
-</div>
+<p class="lead">Respuestas a algunas dudas sobre Pica Una Gema.</p>
+
+<details><summary>¿Cómo consigo gemas?</summary><p>Pica las piedras, recoge la gema y llévala a la zona segura.</p></details>
+<details><summary>¿Qué pasa si la lava me alcanza?</summary><p>Tu personaje muere, pierdes la gema que llevabas y reapareces en tu base.</p></details>
+<details><summary>¿Puedo robar gemas de otras bases?</summary><p>No. Puedes visitar otras bases, pero no puedes robar ni modificar sus gemas.</p></details>
+<details><summary>¿Las bases se pueden mejorar?</summary><p>No. Las bases no tienen mejoras. Las que se mejoran son las caminadoras.</p></details>
+<details><summary>¿Para qué sirven las caminadoras?</summary><p>Sirven para aumentar la velocidad de tu personaje.</p></details>
+<details><summary>¿Cuántas gemas puedo llevar?</summary><p>Solo puedes llevar una gema a la vez.</p></details>
+<details><summary>¿Cuánto tardan en reaparecer las piedras?</summary><p>El ciclo de reinicio de piedras es de 3 minutos.</p></details>
+<details><summary>¿Puedo intercambiar dinero?</summary><p>No. El sistema de intercambios planeado contempla gemas y piedras especiales, pero no dinero.</p></details>
+<details><summary>¿Hay mascotas?</summary><p>Actualmente no se contempla un sistema de mascotas.</p></details>
+<details><summary>¿Hay renacimientos?</summary><p>No se contempla un sistema de renacimientos.</p></details>
+<details><summary>¿Cuántos jugadores caben en un servidor?</summary><p>El máximo configurado es de 7 jugadores.</p></details>
+<details><summary>¿Qué gemas están disponibles?</summary><p>La esmeralda es la gema disponible actualmente. Otras gemas están planeadas.</p></details>
+<details><summary>¿Todas las zonas están desbloqueadas?</summary><p>Sí, el diseño actual permite acceder a todas las zonas desde el inicio.</p></details>
+<details><summary>¿Puedo llevar más de una gema a mi base?</summary><p>Debes transportar una gema a la vez y depositarla antes de recoger otra.</p></details>
+<details><summary>¿Qué hace el bate?</summary><p>Puede golpear a jugadores que transportan una gema y hacer que la suelten.</p></details>
+<details><summary>¿Las piedras grandes sirven para escapar de la lava?</summary><p>Sí, puedes subir a ellas para mantenerte lejos de la lava.</p></details>
+<details><summary>¿Las piedras desaparecen por la lava?</summary><p>No. Las piedras no son destruidas por la lava.</p></details>
+<details><summary>¿Qué ocurre durante la noche?</summary><p>Los jugadores son enviados al SpawnLocation y las piedras se reinician.</p></details>
+<details><summary>¿Las gemas generan dinero?</summary><p>Sí. Las gemas colocadas en tu base generan dinero automáticamente.</p></details>
+<details><summary>¿Las gemas raras generan más dinero?</summary><p>Sí. Las gemas más raras generan más dinero que las comunes.</p></details>
+<details><summary>¿Puedo visitar otras bases?</summary><p>Sí, puedes visitarlas para observarlas.</p></details>
+<details><summary>¿Puedo modificar la base de otra persona?</summary><p>No. Cada jugador protege sus propias gemas y su base.</p></details>
+<details><summary>¿Cuántas gemas se pueden colocar en una base?</summary><p>El sistema de colocación compartido contempla un máximo de 40 gemas.</p></details>
+<details><summary>¿Qué separación necesitan las gemas?</summary><p>El sistema contempla una distancia mínima de 2.5 studs entre gemas.</p></details>
+<details><summary>¿Qué multiplicadores tienen las caminadoras?</summary><p>El sistema contempla multiplicadores desde X1 hasta X256.</p></details>
+<details><summary>¿Se guarda la velocidad?</summary><p>El sistema compartido utiliza el DataStore VelocidadJugadores_v1 para guardar datos de velocidad.</p></details>
+<details><summary>¿Cada cuánto se guarda la velocidad?</summary><p>El sistema contempla un guardado automático cada 60 segundos.</p></details>
+<details><summary>¿Qué pasa con una gema que alguien suelta?</summary><p>Puede permanecer en el suelo hasta que otro jugador la recoja.</p></details>
+<details><summary>¿Puedo llevar una gema mientras tengo otra guardada?</summary><p>Sí. Puedes recoger otra después de depositar la anterior en tu inventario.</p></details>
+<details><summary>¿Hay una máquina de intercambios?</summary><p>Está planeada para futuras actualizaciones.</p></details>
+<details><summary>¿Puedo intercambiar durante la lava?</summary><p>No. La máquina planeada no permitirá intercambios durante ese evento.</p></details>
+<details><summary>¿Se podrán buscar jugadores de otros servidores?</summary><p>Es una función contemplada para la máquina de intercambios.</p></details>
+<details><summary>¿Qué es la gema secreta?</summary><p>Es una recompensa escondida que se planea colocar en el lobby.</p></details>
+<details><summary>¿Cuánto dará la gema secreta?</summary><p>La recompensa prevista es de $100,000.</p></details>
+<details><summary>¿Puedo reclamar el secreto más de una vez?</summary><p>La idea actual es que se pueda reclamar una sola vez por jugador.</p></details>
+<details><summary>¿Qué pasará al llegar a 1000 jugadores simultáneos?</summary><p>Se planea realizar un evento especial y publicar un video de agradecimiento.</p></details>
+<details><summary>¿Qué son las piedras especiales?</summary><p>Son piedras planeadas con poderes únicos y diferentes ingresos de dinero.</p></details>
+<details><summary>¿Cuántas piedras especiales habrá por etapa?</summary><p>La propuesta contempla 10 piedras especiales por etapa.</p></details>
+<details><summary>¿Puedo enviar sugerencias?</summary><p>La propuesta es recibir sugerencias mediante el sitio web.</p></details>
+<details><summary>¿Quién decide qué sugerencias se agregan?</summary><p>El creador del juego tiene la decisión final.</p></details>
+<details><summary>¿Los votos son públicos?</summary><p>Los resultados podrán verse públicamente, pero los votos individuales serán privados.</p></details>
+<details><summary>¿Cuándo terminan las votaciones?</summary><p>La propuesta es mantenerlas abiertas hasta que se publique la actualización.</p></details>
+<details><summary>¿Habrá notificaciones?</summary><p>Se contemplan notificaciones para actualizaciones, eventos, mantenimiento y anuncios.</p></details>
+<details><summary>¿Habrá moderadores?</summary><p>Se contempla un equipo de moderación con permisos limitados.</p></details>
+<details><summary>¿Los moderadores pueden nombrar a otros?</summary><p>No. Solo el creador podrá nombrar moderadores.</p></details>
+<details><summary>¿Puedo recibir reconocimiento por reportar errores?</summary><p>Los jugadores que ayuden responsablemente podrán recibir reconocimiento si aceptan aparecer con su usuario de Roblox.</p></details>
+<details><summary>¿Hay recompensas para YouTubers?</summary><p>La intención es jugar con creadores de contenido que entren, sin regalarles ventajas especiales.</p></details>
+<details><summary>¿Hay recompensas diarias?</summary><p>No se contempla un sistema de recompensas diarias actualmente.</p></details>
+<details><summary>¿Habrá muchos pases de juego?</summary><p>La intención del proyecto es mantener una interfaz limpia y centrarse en la diversión del juego.</p></details>
+<details><summary>¿Cuántas canciones tiene el juego?</summary><p>El diseño contempla una pista musical para todo el juego, además de sonidos para algunas acciones.</p></details>
+<details><summary>¿Dónde puedo hacer preguntas?</summary><p>En la sección de preguntas y respuestas de esta página. Consulta también las reglas del foro.</p></details>
 </section>
 
-<section class="section" id="estado">
-<h2 class="section-title">📚 Cómo leer esta <span>enciclopedia</span></h2>
+<section class="section" id="preguntas">
+<h2 class="section-title">💬 Foro de <span>la comunidad</span></h2>
+<p class="lead">¡Pregunta lo que quieras sobre Pica Una Gema! Cualquier visitante puede publicar preguntas y responder a las de los demás.</p>
 <div class="grid">
-<article class="card"><h3>🟢 Disponible / documentado</h3><p>Función descrita como parte del juego o de un script compartido. Aun así, conviene probarla en la versión publicada.</p></article>
-<article class="card"><h3>🟡 Planeado</h3><p>Idea futura o característica que se ha mencionado, pero que no debe presentarse como lanzada.</p></article>
-<article class="card"><h3>🔵 Por confirmar</h3><p>Detalle que requiere comprobarse en el juego o en la versión más reciente del script.</p></article>
+ <article class="card">
+  <h3>✍️ Publicar una pregunta</h3>
+  <form id="questionForm" class="forum-form">
+   <label for="questionName">Tu nombre o apodo</label>
+   <input id="questionName" maxlength="24" required placeholder="Ej. Zerega">
+   <label for="questionText">¿Qué quieres preguntar?</label>
+   <textarea id="questionText" maxlength="500" required placeholder="Escribe tu pregunta..."></textarea>
+   <button class="action-button" type="submit">Publicar pregunta</button>
+   <p id="questionFeedback" class="forum-feedback" role="status" aria-live="polite"></p>
+  </form>
+ </article>
+ <article class="card">
+  <h3>📜 Reglas del foro</h3>
+  <ul>
+   <li>Respeta a los demás jugadores.</li>
+   <li>No compartas contraseñas, teléfonos, direcciones ni datos personales.</li>
+   <li>No publiques spam ni mensajes ofensivos.</li>
+   <li>Los mensajes de esta versión de demostración se guardan en este navegador.</li>
+  </ul>
+ </article>
 </div>
-<div class="notice warning">Esta enciclopedia reúne los detalles que se han compartido en las conversaciones disponibles. No significa que tengamos todos los scripts originales ni que cada característica siga igual en la versión actual. Los datos no confirmados se marcan como tales.</div>
+<div class="forum-toolbar">
+ <h3>🗨️ Preguntas de los jugadores</h3>
+ <span id="forumCount" class="small">0 preguntas</span>
+</div>
+<div id="forumList" class="forum-list" aria-live="polite"></div>
+<div class="notice warning">⚠️ Versión de demostración: por ahora, los mensajes se guardan en el almacenamiento local del navegador. Para que todos los jugadores puedan ver y responder desde cualquier celular o computadora, hace falta conectar una base de datos y un servicio seguro. No publiques información privada.</div>
 </section>
+
 </main>
-<footer><strong>💎 PICA UNA GEMA STUDIOS</strong><br>Enciclopedia informativa de Pica Una Gema [Beta]<br>Desarrollado por Nova Studios<br><span>¡Gracias por explorar la cueva! ⛏️</span></footer>
+<footer>
+<p><strong>💎 Pica Una Gema Studios</strong></p>
+<p>Un proyecto de Nova Studios.</p>
+<p>Gracias por visitar la enciclopedia de Pica Una Gema [Beta].</p>
+<p class="small">La información puede cambiar conforme avance el desarrollo del juego. Las funciones planeadas no necesariamente están disponibles todavía.</p>
+</footer>
+
 <script>
 const input=document.getElementById('search');
 const noResults=document.getElementById('noResults');
-const sections=[...document.querySelectorAll('main .section')];
 function buscar(){
  const q=input.value.toLocaleLowerCase('es').trim();
- let found=0;
+ const sections=[...document.querySelectorAll('main .section')];
+ let total=0;
  sections.forEach(section=>{
-  const items=[...section.querySelectorAll('.card, details')];
-  let sectionFound=0;
-  items.forEach(item=>{
-   const match=!q||item.innerText.toLocaleLowerCase('es').includes(q);
+  let visible=0;
+  section.querySelectorAll('.card,details').forEach(item=>{
+   const match=!q||item.textContent.toLocaleLowerCase('es').includes(q);
    item.style.display=match?'':'none';
-   if(match){sectionFound++;found++;}
+   if(match)visible++;
   });
-  const titleMatch=!q||section.querySelector('.section-title')?.innerText.toLocaleLowerCase('es').includes(q);
-  const leadMatch=!q||section.querySelector('.lead')?.innerText.toLocaleLowerCase('es').includes(q);
-  section.style.display=(!q||sectionFound>0||titleMatch||leadMatch)?'':'none';
-  if(!items.length&& (titleMatch||leadMatch))found++;
+  const hasContent=section.querySelectorAll('.card,details').length>0;
+  section.style.display=(!q||!hasContent||visible>0)?'':'none';
+  if(section.style.display!=='none')total+=visible;
  });
- noResults.style.display=q&&found===0?'block':'none';
+ noResults.style.display=q&&total===0?'block':'none';
 }
 input.addEventListener('input',buscar);
 
-// Filtro preventivo inicial: normaliza letras, separadores y símbolos comunes.
-// Debe complementarse con moderación y validación en el servidor.
+// Foro local de demostración. Para un foro público multiusuario se necesita backend.
 const questionForm=document.getElementById('questionForm');
+const forumList=document.getElementById('forumList');
+const forumCount=document.getElementById('forumCount');
 const questionFeedback=document.getElementById('questionFeedback');
-const questionText=document.getElementById('questionText');
-function normalizarTexto(texto){
- return texto.toLocaleLowerCase('es')
-  .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
-  .replace(/[0-9]/g,'')
+const STORAGE_KEY='picaUnaGema_forum_demo_v1';
+
+function normalizeForFilter(value){
+ return value.toLocaleLowerCase('es').normalize('NFD')
+  .replace(/[\u0300-\u036f]/g,'')
+  .replace(/[\d]/g,'')
   .replace(/[^a-z]/g,'');
 }
-const palabrasBloqueadas=[
- // La lista debe mantenerse y ampliarse desde el servidor para cubrir variantes locales.
- 'insultoofensivo','palabraprohibida'
+const blockedTerms=[
+ 'mierd','put','cabron','pendej','ching','verga','pinche','culer','jodid','idiot','estupid','maricon'
 ];
-function contieneLenguajeInapropiado(texto){
- const normal=normalizarTexto(texto);
- if(palabrasBloqueadas.some(p=>normal.includes(p))) return true;
- // Detecta escritura con separadores entre letras para las palabras configuradas.
- return false;
+function hasBadLanguage(value){
+ const normalized=normalizeForFilter(value);
+ return blockedTerms.some(term=>normalized.includes(term));
 }
-questionForm.addEventListener('submit',e=>{
- e.preventDefault();
- const texto=questionText.value.trim();
- if(texto.length<8){questionFeedback.textContent='Escribe una pregunta un poco más completa.';return;}
- if(contieneLenguajeInapropiado(texto)){questionFeedback.textContent='No se pudo enviar. Revisa tu mensaje y usa un lenguaje respetuoso.';return;}
- questionFeedback.textContent='La interfaz está lista, pero el envío real se activará al conectar el servidor de preguntas.';
+function loadPosts(){
+ try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');}
+ catch{return [];}
+}
+function savePosts(posts){
+ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(posts));return true;}
+ catch{return false;}
+}
+function safeText(tag,text,className){
+ const el=document.createElement(tag);
+ if(className)el.className=className;
+ el.textContent=text;
+ return el;
+}
+function renderForum(){
+ const posts=loadPosts();
+ forumList.replaceChildren();
+ forumCount.textContent=posts.length+' pregunta'+(posts.length===1?'':'s');
+ if(!posts.length){
+  forumList.append(safeText('p','Todavía no hay preguntas. ¡Sé la primera persona en publicar una!','small'));
+  return;
+ }
+ posts.slice().reverse().forEach(post=>{
+  const article=safeText('article','','forum-post');
+  article.append(safeText('h4',post.author+' pregunta:'));
+  article.append(safeText('p',post.text));
+  article.append(safeText('div',new Date(post.createdAt).toLocaleString('es-MX'),'forum-meta'));
+  const replies=safeText('div','','forum-replies');
+  replies.append(safeText('strong','Respuestas ('+(post.replies||[]).length+')'));
+  (post.replies||[]).forEach(reply=>{
+   const item=safeText('div','','forum-reply');
+   item.append(safeText('strong',reply.author+':'));
+   item.append(safeText('p',reply.text));
+   item.append(safeText('div',new Date(reply.createdAt).toLocaleString('es-MX'),'forum-meta'));
+   replies.append(item);
+  });
+  const form=safeText('form','','reply-form');
+  const name=document.createElement('input');name.maxLength=24;name.required=true;name.placeholder='Tu nombre o apodo';name.setAttribute('aria-label','Tu nombre o apodo');
+  const answer=document.createElement('textarea');answer.maxLength=500;answer.required=true;answer.placeholder='Escribe tu respuesta...';answer.setAttribute('aria-label','Tu respuesta');
+  const button=safeText('button','Responder','reply-button');button.type='submit';
+  const feedback=safeText('span','','forum-feedback');
+  form.append(name,answer,button,feedback);
+  form.addEventListener('submit',event=>{
+   event.preventDefault();
+   const author=name.value.trim(),text=answer.value.trim();
+   if(!author||text.length<2){feedback.textContent='Completa tu nombre y respuesta.';return;}
+   if(hasBadLanguage(author+' '+text)){feedback.textContent='Mensaje bloqueado. Usa un lenguaje respetuoso.';return;}
+   const current=loadPosts();const target=current.find(item=>item.id===post.id);
+   if(!target)return;
+   target.replies=target.replies||[];
+   target.replies.push({author,text,createdAt:Date.now()});
+   if(!savePosts(current)){feedback.textContent='No se pudo guardar en este navegador.';return;}
+   renderForum();
+  });
+  const actions=safeText('div','','forum-actions');
+  const report=safeText('button','⚑ Reportar','report-button');report.type='button';
+  report.addEventListener('click',()=>{
+   report.textContent='Reporte anotado en este navegador';
+   report.disabled=true;
+  });
+  actions.append(report);
+  article.append(replies,form,actions);
+  forumList.append(article);
+ });
+}
+questionForm.addEventListener('submit',event=>{
+ event.preventDefault();
+ const author=document.getElementById('questionName').value.trim();
+ const text=document.getElementById('questionText').value.trim();
+ if(!author||text.length<8){questionFeedback.textContent='Escribe tu nombre y una pregunta más completa.';return;}
+ if(hasBadLanguage(author+' '+text)){questionFeedback.textContent='No se publicó. Usa un lenguaje respetuoso.';return;}
+ const posts=loadPosts();
+ posts.push({id:String(Date.now())+'_'+Math.random().toString(36).slice(2),author,text,createdAt:Date.now(),replies:[]});
+ if(!savePosts(posts)){questionFeedback.textContent='No se pudo guardar. Revisa el espacio disponible del navegador.';return;}
+ questionForm.reset();questionFeedback.textContent='¡Pregunta publicada en este navegador!';
+ renderForum();
 });
-
+renderForum();
 </script>
 </body>
 </html>
